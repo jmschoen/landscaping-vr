@@ -5,26 +5,29 @@ using UnityEngine;
 public class Spawn: MonoBehaviour {
 
 	private SteamVR_TrackedObject trackedObj;
-	private GameObject objectInHand;
 	private SteamVR_Controller.Device Controller {
 		get { return SteamVR_Controller.Input ((int)trackedObj.index); }
 	}
+	private GameObject previewHill;
 
 	public GameObject hillPrefab;
 
 
 	void Awake() {
 		trackedObj = GetComponent<SteamVR_TrackedObject> ();
+		previewHill = Instantiate (hillPrefab);
+		previewHill.transform.parent = transform;
 	}
 
 	void SpawnHill() {
 		GameObject hill = Instantiate (hillPrefab);
 		hill.SetActive(true);
-		hill.transform.position = gameObject.transform.position;
+		hill.transform.position = previewHill.transform.position;
+		hill.transform.rotation = previewHill.transform.rotation;
 	}
 	
 	void Update () {
-		if (Controller.GetHairTriggerDown ()) {
+		if (Controller.GetHairTrigger ()) {
 			SpawnHill();
 		}
 	}
