@@ -25,7 +25,6 @@ public class Move: MonoBehaviour {
 			if (device.GetAxis().x != 0 || device.GetAxis().y != 0) {
 				x = device.GetAxis().x;
 				y = device.GetAxis().y;
-				Debug.Log(x + " " + y);
 				cameraRigTransform.Translate(x * Time.deltaTime, 0, y * Time.deltaTime);
 			} 	
 		}
