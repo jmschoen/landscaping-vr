@@ -27,7 +27,7 @@ public class Spawn: MonoBehaviour {
 	}
 	
 	void Update () {
-		if (Controller.GetHairTrigger ()) {
+		if (Controller.GetHairTrigger () && !transform.GetChild(1).name.Contains("Menu")) {
 			SpawnHill();
 		}
 	}
