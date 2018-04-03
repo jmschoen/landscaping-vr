@@ -19,7 +19,7 @@ public class Spawn: MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.name != objPrefab.name) {
+		if (other.name != objPrefab.name && !other.name.Contains("plane")) {
 			objPrefab = other.gameObject;
 			setPreview ();
 		}
