@@ -15,19 +15,41 @@ public class Spawn: MonoBehaviour {
 
 	void Awake() {
 		trackedObj = GetComponent<SteamVR_TrackedObject> ();
+		setPreview ();
+	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.name != objPrefab.name) {
+			objPrefab = other.gameObject;
+			setPreview ();
+		}
+	}
+
+	void setPreview() {
+		Destroy (preview);
 		preview = Instantiate (objPrefab);
+		deleteColliderIfHasCollider (preview);
 		preview.transform.parent = transform;
+		preview.transform.position = trackedObj.transform.position;
+		preview.transform.rotation = trackedObj.transform.rotation;
 	}
 
 	void SpawnObject() {
 		GameObject obj = Instantiate (objPrefab);
+		deleteColliderIfHasCollider (obj);
 		obj.SetActive(true);
 		obj.transform.position = preview.transform.position;
 		obj.transform.rotation = preview.transform.rotation;
 	}
+
+	void deleteColliderIfHasCollider(GameObject o) {
+		Collider col;
+		if (col = o.GetComponent<Collider> ())
+			Destroy (col);
+	}
 	
 	void Update () {
-		if (Controller.GetHairTrigger () && !transform.GetChild(1).name.Contains("Menu")) {
+		if (Controller.GetHairTriggerDown ()) {
 			SpawnObject();
 		}
 	}
