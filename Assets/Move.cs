@@ -23,9 +23,7 @@ public class Move: MonoBehaviour {
 		if (Controller.GetPress (SteamVR_Controller.ButtonMask.Touchpad)) {
 			device = SteamVR_Controller.Input((int)trackedObj.index);
 			if (device.GetAxis().x != 0 || device.GetAxis().y != 0) {
-				x = device.GetAxis().x;
-				y = device.GetAxis().y;
-				cameraRigTransform.Translate(x * Time.deltaTime, 0, y * Time.deltaTime);
+				cameraRigTransform.Translate(gameObject.transform.forward.x * Time.deltaTime, 0, gameObject.transform.forward.z * Time.deltaTime);
 			} 	
 		}
 	}
