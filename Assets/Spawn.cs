@@ -8,27 +8,27 @@ public class Spawn: MonoBehaviour {
 	private SteamVR_Controller.Device Controller {
 		get { return SteamVR_Controller.Input ((int)trackedObj.index); }
 	}
-	private GameObject previewHill;
+	private GameObject preview;
 
-	public GameObject hillPrefab;
+	public GameObject objPrefab;
 
 
 	void Awake() {
 		trackedObj = GetComponent<SteamVR_TrackedObject> ();
-		previewHill = Instantiate (hillPrefab);
-		previewHill.transform.parent = transform;
+		preview = Instantiate (objPrefab);
+		preview.transform.parent = transform;
 	}
 
-	void SpawnHill() {
-		GameObject hill = Instantiate (hillPrefab);
-		hill.SetActive(true);
-		hill.transform.position = previewHill.transform.position;
-		hill.transform.rotation = previewHill.transform.rotation;
+	void SpawnObject() {
+		GameObject obj = Instantiate (objPrefab);
+		obj.SetActive(true);
+		obj.transform.position = preview.transform.position;
+		obj.transform.rotation = preview.transform.rotation;
 	}
 	
 	void Update () {
 		if (Controller.GetHairTrigger () && !transform.GetChild(1).name.Contains("Menu")) {
-			SpawnHill();
+			SpawnObject();
 		}
 	}
 }
