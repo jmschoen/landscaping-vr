@@ -9,6 +9,7 @@ public class Spawn: MonoBehaviour {
 		get { return SteamVR_Controller.Input ((int)trackedObj.index); }
 	}
 	private GameObject preview;
+	private Collider parentCol;
 
 	public GameObject objPrefab;
 
@@ -16,10 +17,11 @@ public class Spawn: MonoBehaviour {
 	void Awake() {
 		trackedObj = GetComponent<SteamVR_TrackedObject> ();
 		setPreview ();
+		parentCol = GetComponent<Collider>();
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.name != objPrefab.name && !other.name.Contains("plane")) {
+		if (other.name != objPrefab.name && !other.name.Contains("plane") && !other.name.Contains("Clone")) {
 			objPrefab = other.gameObject;
 			setPreview ();
 		}
@@ -28,24 +30,18 @@ public class Spawn: MonoBehaviour {
 	void setPreview() {
 		Destroy (preview);
 		preview = Instantiate (objPrefab);
-		deleteColliderIfHasCollider (preview);
 		preview.transform.parent = transform;
 		preview.transform.position = trackedObj.transform.position;
 		preview.transform.rotation = trackedObj.transform.rotation;
 	}
 
 	void SpawnObject() {
-		GameObject obj = Instantiate (objPrefab);
-		deleteColliderIfHasCollider (obj);
-		obj.SetActive(true);
-		obj.transform.position = preview.transform.position;
-		obj.transform.rotation = preview.transform.rotation;
-	}
-
-	void deleteColliderIfHasCollider(GameObject o) {
-		Collider col;
-		if (col = o.GetComponent<Collider> ())
-			Destroy (col);
+		if (!preview.name.Contains("Erase")) {
+			GameObject obj = Instantiate (objPrefab);
+			obj.SetActive (true);
+			obj.transform.position = preview.transform.position;
+			obj.transform.rotation = preview.transform.rotation;
+		}
 	}
 	
 	void Update () {
