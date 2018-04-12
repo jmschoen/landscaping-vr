@@ -33,6 +33,7 @@ public class Spawn: MonoBehaviour {
 		preview.transform.parent = transform;
 		preview.transform.position = trackedObj.transform.position;
 		preview.transform.rotation = trackedObj.transform.rotation;
+		preview.transform.Rotate (new Vector3 (-90, 0, 0));
 	}
 
 	void SpawnObject() {
@@ -41,6 +42,8 @@ public class Spawn: MonoBehaviour {
 			obj.SetActive (true);
 			obj.transform.position = preview.transform.position;
 			obj.transform.rotation = preview.transform.rotation;
+			if (preview.name.Contains("hill"))
+				obj.layer = 8;
 		}
 	}
 	

@@ -20,11 +20,13 @@ public class Move: MonoBehaviour {
 	}
 
 	void Update () {
-		if (Controller.GetPress (SteamVR_Controller.ButtonMask.Touchpad)) {
-			device = SteamVR_Controller.Input((int)trackedObj.index);
-			if (device.GetAxis().x != 0 || device.GetAxis().y != 0) {
-				cameraRigTransform.Translate(gameObject.transform.forward.x * Time.deltaTime, 0, gameObject.transform.forward.z * Time.deltaTime);
-			} 	
+		if (cameraRigTransform.localScale == new Vector3 (1, 1, 1)) {
+			if (Controller.GetPress (SteamVR_Controller.ButtonMask.Touchpad)) {
+				device = SteamVR_Controller.Input ((int)trackedObj.index);
+				if (device.GetAxis ().x != 0 || device.GetAxis ().y != 0) {
+					cameraRigTransform.Translate (gameObject.transform.forward.x * Time.deltaTime, 0, gameObject.transform.forward.z * Time.deltaTime);
+				} 	
+			}
 		}
 	}
 }

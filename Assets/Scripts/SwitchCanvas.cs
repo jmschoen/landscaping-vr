@@ -16,13 +16,15 @@ public class SwitchCanvas: MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.name.Contains("plane")) {
-			Destroy(layout.transform.GetChild(0).gameObject);
+		if (other.name.Contains("plane") && !other.name.Contains("Clone")) {
+			if (layout.transform.childCount > 1)
+				Destroy(layout.transform.GetChild(0).gameObject);
 			GameObject obj = Instantiate (other.gameObject);
 			obj.transform.SetParent (layout.transform);
-			deleteColliderIfHasCollider (obj);
+			//deleteColliderIfHasCollider (obj);
 			obj.transform.position = new Vector3 (0, 1, 0);
-			obj.transform.localScale = new Vector3 (.25f, .25f, .25f);
+			obj.transform.localScale = new Vector3 (200, 200, 200);
+			obj.layer = 8;
 		}
 	}
 
