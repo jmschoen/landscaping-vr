@@ -15,7 +15,6 @@ public class Erase: MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		Debug.Log (col.name);
 		if (col.name.Contains ("Clone"))
 			erasableObj = col.gameObject;
 	}
