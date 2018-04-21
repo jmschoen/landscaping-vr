@@ -12,7 +12,7 @@ public class Spawn: MonoBehaviour {
 	private Collider parentCol;
 
 	public GameObject objPrefab;
-
+	public Transform cameraRigTransform;
 
 	void Awake() {
 		trackedObj = GetComponent<SteamVR_TrackedObject> ();
@@ -37,12 +37,12 @@ public class Spawn: MonoBehaviour {
 	}
 
 	void SpawnObject() {
-		if (!preview.name.Contains("Erase")) {
+		if (!preview.name.Contains("Erase") && cameraRigTransform.localScale.x == 1) {
 			GameObject obj = Instantiate (objPrefab);
 			obj.SetActive (true);
 			obj.transform.position = preview.transform.position;
 			obj.transform.rotation = preview.transform.rotation;
-			if (preview.name.Contains("hill"))
+			if (preview.name.Contains("hill") || preview.name.Contains("mountain"))
 				obj.layer = 8;
 		}
 	}
