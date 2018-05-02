@@ -9,9 +9,8 @@ Virtual reality (VR) as a concept has been around for years, primarily through p
 <b>Graphics:</b> NVIDIA GeForce GTX 970 /AMD Radeon RX 480 equivalent or greater<br>
 <b>CPU:</b> Intel Core i5-4590 equivalent or greater<br>
 <b>RAM:</b> 4GB+ of RAM<br>
-<b>Ports:</b> Compatible HDMI 1.3 video output<br>
-       1x USB 2.0 port<br>
-       Windows 7 SP1 or greater<br>
+<b>Ports:</b> Compatible HDMI 1.3 video output and 1x USB 2.0 port<br>
+<b>OS:</b> Windows 7 SP1 or greater
 
 <h2>Licensing</h2>
 
