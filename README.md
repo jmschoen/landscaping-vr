@@ -5,13 +5,13 @@ Virtual reality (VR) as a concept has been around for years, primarily through p
 
 <h2>Requirements</h2>
 
-Device: HTC Vive
-Graphics: NVIDIA GeForce GTX 970 /AMD Radeon RX 480 equivalent or greater
-CPU: Intel Core i5-4590 equivalent or greater
-RAM: 4GB+ of RAM
-Ports: Compatible HDMI 1.3 video output
-       1x USB 2.0 port
-       Windows 7 SP1 or greater
+Device: HTC Vive<br>
+Graphics: NVIDIA GeForce GTX 970 /AMD Radeon RX 480 equivalent or greater<br>
+CPU: Intel Core i5-4590 equivalent or greater<br>
+RAM: 4GB+ of RAM<br>
+Ports: Compatible HDMI 1.3 video output<br>
+       1x USB 2.0 port<br>
+       Windows 7 SP1 or greater<br>
 
 <h2>Licensing</h2>
 
